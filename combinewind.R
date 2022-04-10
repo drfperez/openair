@@ -22,3 +22,5 @@ cityall<-merge(city2, wind3, by ="date")
 
 
 pollutionRose(cityall,...)
+
+//30 and 31 data from XC Castellbisbal https://analisi.transparenciacatalunya.cat/d/nzvn-apee/visualization
