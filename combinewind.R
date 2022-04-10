@@ -12,14 +12,16 @@ names(wind2)[names(wind2) == "30"] <- "ws"
 
 names(wind2)[names(wind2) == "DATA_LECTURA"] <- "date"
 
-write.csv(wind2,"C:\\Users\\YOURCOMPUTERNAME\\wind.csv")
+write.csv(wind2,"C:\\Users\\YOURCOMPUTERNAME\\Documents\\wind3.csv")
 
 wind3<-timeAverage(wind2, time.avg="hour") 
 
 
 cityall<-merge(city2, wind3, by ="date")
- View (cityall)
 
+View (cityall)
+
+write.csv(wind2,"C:\\Users\\YOURCOMPUTERNAME\\Documents\\cityall.csv")
 
 pollutionRose(cityall,...)
 
