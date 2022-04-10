@@ -12,7 +12,7 @@ names(wind2)[names(wind2) == "30"] <- "ws"
 
 names(wind2)[names(wind2) == "DATA_LECTURA"] <- "date"
 
-write.csv(wind2,"C:\\Users\\YOURCOMPUTERNAME\\
+write.csv(wind2,"C:\\Users\\YOURCOMPUTERNAME\\wind.csv")
 
 wind3<-timeAverage(wind2, time.avg="hour") 
 
