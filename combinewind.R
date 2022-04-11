@@ -22,4 +22,4 @@ View (cityall)
 
 write.csv(wind2,"C:\\Users\\YOURCOMPUTERNAME\\Documents\\cityall.csv")
 
-pollutionRose(cityall,...)
+pollutionRose(cityall, pollutant="O3")
