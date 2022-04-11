@@ -15,7 +15,7 @@ trendLevel(city2, pollutant = "H2S", main="Hydrogen sulfide evolution in Martore
 daily<-timeAverage(city2NO2,avg.time = "day")
 View(daily)
 
-calendarPlot(city2, pollutant="NO2", year="2021")
+calendarPlot(daily, pollutant="NO2", year="2021")
 
 city2NO2 <- subset(city2, pollutant=="NO2")
 
