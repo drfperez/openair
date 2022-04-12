@@ -8,9 +8,7 @@ class(city2$date)
 city2$pollutant<-as.factor(city2$pollutant)
 # Check previous conversion is ok
 class(city2$pollutant)
-
 # To know the different levels of the factor pollutant in order to draw figures
-
 levels(city2$pollutant)
 # Create a figure with hour, day, week, month variations of pollutants
 timeVariation(city2, pollutant=c("O3","NO2","H2S","NO","HCNM","CO","SO2","HCT", "NOX","PM10"), main="Air pollution in Martorell (1991-2022)")
