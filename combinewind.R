@@ -21,5 +21,4 @@ write.csv(cityall,"C:\\Users\\YOURCOMPUTERNAME\\Documents\\cityall.csv")
 View (cityall)
 # Remember to edit the path to be used in your computer
 write.csv(wind2,"C:\\Users\\YOURCOMPUTERNAME\\Documents\\cityall.csv")
-
 pollutionRose(cityall, pollutant="O3")
