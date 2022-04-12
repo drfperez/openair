@@ -17,8 +17,7 @@ write.csv(wind2,"C:\\Users\\YOURCOMPUTERNAME\\Documents\\wind3.csv")
 wind3<-timeAverage(wind2, time.avg="hour") 
 # Combine two databases in one database.
 cityall<-merge(city2, wind3, by ="date")
+# Remember to edit the path to be used in your computer
 write.csv(cityall,"C:\\Users\\YOURCOMPUTERNAME\\Documents\\cityall.csv")
 View (cityall)
-# Remember to edit the path to be used in your computer
-write.csv(wind2,"C:\\Users\\YOURCOMPUTERNAME\\Documents\\cityall.csv")
 pollutionRose(cityall, pollutant="O3")
