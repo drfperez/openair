@@ -29,4 +29,30 @@ city2 <- as_data_frame(city2)
 # call lares library to find and replace some values including NA
 library (lares)
 city2<-replaceall(city2, c("T00:00:00.000 h01", "T00:00:00.000 h02","T00:00:00.000 h03","T00:00:00.000 h04","T00:00:00.000 h05","T00:00:00.000 h06","T00:00:00.000 h07","T00:00:00.000 h08","T00:00:00.000 h09","T00:00:00.000 h10","T00:00:00.000 h11","T00:00:00.000 h12","T00:00:00.000 h13","T00:00:00.000 h14","T00:00:00.000 h15","T00:00:00.000 h16","T00:00:00.000 h17","T00:00:00.000 h18","T00:00:00.000 h19","T00:00:00.000 h20","T00:00:00.000 h21","T00:00:00.000 h22","T00:00:00.000 h23","T00:00:00.000 h24"), c(" 01:00:00", " 02:00:00", " 03:00:00", " 04:00:00"," 05:00:00", " 06:00:00"," 07:00:00", " 08:00:00"," 09:00:00", " 10:00:00"," 11:00:00", " 12:00:00"," 13:00:00", " 14:00:00"," 15:00:00", " 16:00:00"," 17:00:00", " 18:00:00"," 19:00:00", " 20:00:00"," 21:00:00", " 22:00:00"," 23:00:00", " 00:00:00"))
+# Call openair library to use built-in functions
+library(openair)
+# Convert date column from characters to dates
+city2$date<-as.POSIXct(city2$date,"%Y-%m-%d %H:%M:%S", tz="Europe/Madrid")
+# Check date column now is a date or POSIXct
+class(city2$date)
+# Convert pollutant column from numeric to factor
+city2$pollutant<-as.factor(city2$pollutant)
+# Check previous conversion is ok
+class(city2$pollutant)
+# To know the different levels of the factor pollutant in order to draw figures
+levels(city2$pollutant)
+# Create a figure with hour, day, week, month variations of pollutants
+timeVariation(city2, pollutant=c("O3","NO2","H2S","NO","HCNM","CO","SO2","HCT", "NOX","PM10"), main="Air pollution in Martorell (1991-2022)")
+# Create another view of the previous data centered in one pollutant
+trendLevel(city2, pollutant = "H2S", main="Hydrogen sulfide evolution in Martorell")
+# Calculate daily means from hourly data of poly
+daily<-timeAverage(city2NO2,avg.time = "day")
+View(daily)
+# Create a calendar plot showing values of pollutants with colours
+calendarPlot(daily, pollutant="NO2", year="2021")
+# Select only one pollutant of my database
+city2NO2 <- subset(city2, pollutant=="NO2")
+# Calculate yearly means from previous data
+yearly<-timeAverage(city2NO2,avg.time = "year")
+View(yearly)
 
