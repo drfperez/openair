@@ -1,5 +1,5 @@
 # First you need to install some libraries to manipulate and analyse dara
-install.packages(c("dplyr", "tibble","openair","tidyverse", "lares"))
+install.packages(c("dplyr","openair","tidyverse", "lares"))
 # Remember to edit the next line in order to use your city data
 # Do not use my hourly data from Martorell
 city<-read.csv('https://raw.githubusercontent.com/drfperez/openair/main/city.csv')
