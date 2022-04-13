@@ -2,7 +2,7 @@ wind<-read.csv("https://raw.githubusercontent.com/drfperez/openair/main/wind.csv
 # Remember to put your data instead of Martorell default data
 View(wind)
 # View your data
-wind1←wind[-c(1,2,5,7,8)]
+wind1<-wind[-c(1,2,5,7,8)]
 # Delete some unnecessary columns
 wind2<-pivot_wider(wind1,names_from = CODI_VARIABLE, values_from = VALOR_LECTURA)
 # Convert rows containing wind data in columns
