@@ -3,7 +3,7 @@ install.packages(c("openair","tidyverse", "lares"))
 # Remember to edit the next line in order to use your city data
 # Do not use my hourly data from Martorell
 city<-read.csv('https://raw.githubusercontent.com/drfperez/openair/main/city.csv')
-# You need to call tydiverse library in order to use pivot_longer
+# You need to call tidyverse library in order to use pivot_longer
 library (tidyverse)
 # pivot_longer allows you to convert hour columns to hour rows
 city1<-pivot_longer(city,cols=c(h01,h02,h03,h04,h05,h06,h07,h08,h09,h10,h11,h12,h13,h14, h15,h16,h17,h18,h19,h20,h21,h22,h23,h24), names_to="hour", values_to = "value")
