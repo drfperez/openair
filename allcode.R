@@ -78,3 +78,5 @@ cityall<-merge(city2, wind3, by ="date")
 write.csv(cityall,"C:\\Users\\YOURCOMPUTERNAME\\Documents\\cityall.csv")
 View (cityall)
 pollutionRose(cityall, pollutant="O3")
+#year mean to compare with regulations
+timePlot(yearly, pollutant =  c("so2", "o3", "nox", "no2","no", "co", "ps" ), avg.time = "year", lwd= 2, lty=1, group = TRUE, main="Badalona line Plot", ref.y = list(h = c(40, 20, 10), lty = c(1, 2, 3), lwd=c(3, 3, 3) ))
