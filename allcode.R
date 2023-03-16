@@ -83,6 +83,7 @@ episodeNO2<-selectRunning(mydata, pollutant=”no2″, threshold=200, run.len=1)
 table(episode$criterion)
 #use similar codes for 8 hour mean of ozone or daily mean limits
 #year mean to compare with regulations
+ggplot(data=fig1, aes(x=date, y=value, color=pollutant)) +geom_line()+geom_point()+geom_hline(yintercept=40)+geom_hline(yintercept=10, linetype=”dashed”, color = “red”)
 timePlot(yearly, pollutant =  c("so2", "o3", "nox", "no2","no", "co", "ps" ), avg.time = "year", lwd= 2, lty=1, group = TRUE, main="Badalona line Plot", ref.y = list(h = c(40, 20, 10), lty = c(1, 2, 3), lwd=c(3, 3, 3) ))
 #Replace date format 
 wind3<-replaceall(wind2, c("12:00:00 PM", "01:00:00 PM","02:00:00 PM","03:00:00 PM","04:00:00 PM","05:00:00 PM","06:00:00 PM","07:00:00 PM","08:00:00 PM","09:00:00 PM","10:00:00 PM","11:00:00 PM","12:00:00 AM","01:00:00 AM","02:00:00 AM","03:00:00 AM","04:00:00 AM","05:00:00 AM","06:00:00 AM","07:00:00 AM","08:00:00 AM","09:00:00 AM","10:00:00 AM","11:00:00 AM"), c(" 00:00:00", " 13:00:00", " 14:00:00", " 15:00:00"," 16:00:00", " 17:00:00"," 18:00:00", " 19:00:00"," 20:00:00", " 21:00:00"," 22:00:00", " 23:00:00"," 12:00:00", " 01:00:00", " 02:00:00"," 03:00:00", " 04:00:00"," 05:00:00", " 06:00:00"," 07:00:00", " 08:00:00"," 09:00:00", " 10:00:00"," 11:00:00"))
