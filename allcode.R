@@ -1,4 +1,4 @@
-# First you need to install some libraries to manipulate and analyse dara
+Of# First you need to install some libraries to manipulate and analyse dara
 install.packages(c("openair","tidyverse", "lares"))
 # Remember to edit the next line in order to use your city data
 # Do not use my hourly data from Martorell
@@ -83,6 +83,7 @@ episodeNO2<-selectRunning(mydata, pollutant=”no2″, threshold=200, run.len=1)
 table(episode$criterion)
 #use similar codes for 8 hour mean of ozone or daily mean limits
 #year mean to compare with regulations
+#ggplot2 library to create limit plots
 ggplot(data=fig1, aes(x=date, y=value, color=pollutant)) +geom_line()+geom_point()+geom_hline(yintercept=40)+geom_hline(yintercept=10, linetype=”dashed”, color = “red”)
 timePlot(yearly, pollutant =  c("so2", "o3", "nox", "no2","no", "co", "ps" ), avg.time = "year", lwd= 2, lty=1, group = TRUE, main="Badalona line Plot", ref.y = list(h = c(40, 20, 10), lty = c(1, 2, 3), lwd=c(3, 3, 3) ))
 #Replace date format 
