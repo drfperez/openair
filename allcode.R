@@ -88,3 +88,18 @@ ggplot(data=fig1, aes(x=date, y=value, color=pollutant)) +geom_line()+geom_point
 timePlot(yearly, pollutant =  c("so2", "o3", "nox", "no2","no", "co", "ps" ), avg.time = "year", lwd= 2, lty=1, group = TRUE, main="Badalona line Plot", ref.y = list(h = c(40, 20, 10), lty = c(1, 2, 3), lwd=c(3, 3, 3) ))
 #Replace date format 
 wind3<-replaceall(wind2, c("12:00:00 PM", "01:00:00 PM","02:00:00 PM","03:00:00 PM","04:00:00 PM","05:00:00 PM","06:00:00 PM","07:00:00 PM","08:00:00 PM","09:00:00 PM","10:00:00 PM","11:00:00 PM","12:00:00 AM","01:00:00 AM","02:00:00 AM","03:00:00 AM","04:00:00 AM","05:00:00 AM","06:00:00 AM","07:00:00 AM","08:00:00 AM","09:00:00 AM","10:00:00 AM","11:00:00 AM"), c(" 00:00:00", " 13:00:00", " 14:00:00", " 15:00:00"," 16:00:00", " 17:00:00"," 18:00:00", " 19:00:00"," 20:00:00", " 21:00:00"," 22:00:00", " 23:00:00"," 12:00:00", " 01:00:00", " 02:00:00"," 03:00:00", " 04:00:00"," 05:00:00", " 06:00:00"," 07:00:00", " 08:00:00"," 09:00:00", " 10:00:00"," 11:00:00"))
+# Crear un vector vacío para almacenar los valores convertidos
+
+converted_values <- numeric(length(city3$y))
+
+# Convertir cada elemento de la lista a numérico
+
+for (i in 1:length(city3$y)) {
+
+  converted_values[i] <- as.numeric(city3$y[[i]])
+
+}
+
+# Asignar los valores convertidos a "city3$y"
+
+city3$y <- converted_values
