@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heatmap de Contaminació</title>
+  <!-- Inclou les llibreries de Leaflet, Leaflet.heat i PapaParse -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  <style>
+    #map { height: 90vh; width: 100%; margin: 0; }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .controls { text-align: center; padding: 10px; background-color: #f8f9fa; }
+    .legend {
+      background: white;
+      padding: 10px;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      z-index: 1000;
+      border: 1px solid #ccc;
+    }
+    .gradient-bar { height: 20px; width: 100%; }
+    select option { font-size: 16px; line-height: 1.2; }
+  </style>
+</head>
+<body>
+
+<div class="controls">
+  <label for="any">Selecciona any:</label>
+  <select id="any"></select>
+
+  <label for="contaminant">Selecciona contaminant:</label>
+  <select id="contaminant"></select>
+
+  <button onclick="actualitzaHeatmap()">Actualitza Heatmap</button>
+</div>
+
+<div id="map"></div>
+<div class="legend" id="legend"></div>
+
+<script>
+/* Funció que converteix tots els dígits d'una cadena al seu equivalent en subíndex Unicode */
+function toSubscript(str) {
+  const subs = { '0': '₀', '1': '₁', '2': '₂', '3': '₃', '4': '₄', '5': '₅', '6': '₆', '7': '₇', '8': '₈', '9': '₉' };
+  return str.replace(/\d/g, d => subs[d] || d);
+}
+
+// Inicialitza el mapa amb Leaflet
+const map = L.map('map').setView([41.3851, 2.1734], 12);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+let dades = {};  // Aquí s'emmagatzemaran les dades processades del CSV
+let heatLayer;
+
+// Configuració dels contaminants (els noms s'indiquen sense HTML; la conversió a subíndex es fa amb la funció toSubscript)
+const configContaminants = {
+  "PM10": { 
+    nom: "PM10",
+    escala: { 
+      minColor: '#0000FF',   // Blau per a valors baixos
+      midColor: '#FFFF00',   // Groc per a valors intermedis
+      maxColor: '#FF0000',   // Vermell per a valors alts
+      minValue: 0, 
+      midValue: 50, 
+      maxValue: 100 
+    },
+    unitats: "µg/m³"
+  },
+  "NO2": { 
+    nom: "NO2",
+    escala: { 
+      minColor: '#0000FF',
+      midColor: '#FFFF00',
+      maxColor: '#FF0000',
+      minValue: 0, 
+      midValue: 25, 
+      maxValue: 50 
+    },
+    unitats: "µg/m³"
+  },
+  "PM2.5": { 
+    nom: "PM2.5",
+    escala: { 
+      minColor: '#0000FF',
+      midColor: '#FFFF00',
+      maxColor: '#FF0000',
+      minValue: 0, 
+      midValue: 10, 
+      maxValue: 20 
+    },
+    unitats: "µg/m³"
+  }
+};
+
+/* Funció per normalitzar el valor tenint en compte un punt intermedi.
+   Si el valor és inferior o igual al valor intermedi, es normalitza de 0 a 0.5;
+   si és superior, de 0.5 a 1.0. */
+function escalaValor(valor, escala) {
+  let norm;
+  if (valor <= escala.midValue) {
+    norm = (valor - escala.minValue) / (escala.midValue - escala.minValue) * 0.5;
+  } else {
+    norm = 0.5 + (valor - escala.midValue) / (escala.maxValue - escala.midValue) * 0.5;
+  }
+  return norm;
+}
+
+/* Genera un gradient amb tres punts per al heatmap:
+   0.0 → color mínim (blau)
+   0.5 → color intermedi (groc)
+   1.0 → color màxim (vermell) */
+function generaGradient(escala) {
+  return {
+    0.0: escala.minColor,
+    0.5: escala.midColor,
+    1.0: escala.maxColor
+  };
+}
+
+/* Aquesta funció calcula paràmetres del heatmap (radius i blur) en funció del zoom.
+   Es defineix un zoom base (12) amb radius base (50) i blur base (40). Quan el zoom varia,
+   s'ajusten aquests paràmetres inversament per mantenir una aparença coherent. */
+function getHeatmapOptions() {
+  const currentZoom = map.getZoom();
+  const baseZoom = 12;
+  const baseRadius = 50;
+  const baseBlur = 40;
+  const factor = baseZoom / currentZoom; // si es fa zoom in (currentZoom > baseZoom) el factor < 1 i viceversa
+  return {
+    radius: baseRadius * factor,
+    blur: baseBlur * factor,
+    maxZoom: 12
+  };
+}
+
+/* Genera el menú d'anys basant-se en les claus de l'objecte "dades". */
+function inicialitzaOpcionsAnys() {
+  const selectAny = document.getElementById('any');
+  selectAny.innerHTML = '';
+  Object.keys(dades).forEach(any => {
+    const opcio = document.createElement('option');
+    opcio.value = any;
+    opcio.textContent = any;
+    selectAny.appendChild(opcio);
+  });
+  selectAny.addEventListener('change', () => {
+    actualitzaOpcionsContaminants();
+    actualitzaHeatmap();
+  });
+}
+
+/* Genera el menú de contaminants per a l'any seleccionat.
+   S'utilitza la funció toSubscript per mostrar els dígits com a subíndex. */
+function actualitzaOpcionsContaminants() {
+  const selectContaminant = document.getElementById('contaminant');
+  selectContaminant.innerHTML = '';
+  const anySeleccionat = document.getElementById('any').value;
+  if (dades[anySeleccionat]) {
+    Object.keys(dades[anySeleccionat]).forEach(contaminant => {
+      const opcio = document.createElement('option');
+      opcio.value = contaminant;
+      let nomMostrat = configContaminants[contaminant] ? configContaminants[contaminant].nom : contaminant;
+      opcio.textContent = toSubscript(nomMostrat);
+      selectContaminant.appendChild(opcio);
+    });
+  }
+}
+
+/* Actualitza el heatmap:
+   - Obté l'any i el contaminant seleccionats.
+   - Calcula la intensitat de cada punt normalitzant el seu valor.
+   - Obté els paràmetres del heatmap (radius i blur) en funció del zoom actual.
+   - Afegeix la capa heatmap al mapa amb el gradient definit.
+*/
+function actualitzaHeatmap() {
+  const any = document.getElementById('any').value;
+  const contaminant = document.getElementById('contaminant').value;
+  
+  if (heatLayer) {
+    map.removeLayer(heatLayer);
+  }
+  
+  const dadesSeleccionades = dades[any][contaminant];
+  const configContaminant = configContaminants[contaminant] || {
+    escala: { 
+      minColor: '#0000FF', 
+      midColor: '#FFFF00', 
+      maxColor: '#FF0000', 
+      minValue: 0, 
+      midValue: 50, 
+      maxValue: 100 
+    },
+    nom: contaminant,
+    unitats: ''
+  };
+
+  const options = getHeatmapOptions();
+  heatLayer = L.heatLayer(
+    dadesSeleccionades.map(punt => [
+      punt.lat,
+      punt.lng,
+      escalaValor(punt.valor, configContaminant.escala)
+    ]),
+    Object.assign({}, options, {
+      gradient: generaGradient(configContaminant.escala)
+    })
+  ).addTo(map);
+
+  actualitzaLlegenda(contaminant);
+}
+
+/* Actualitza la llegenda mostrant:
+   - El nom del contaminant (amb subíndex).
+   - Una barra amb el gradient (blau → groc → vermell).
+   - Els valors mínim, intermedi i màxim, i les unitats.
+*/
+function actualitzaLlegenda(contaminant) {
+  const legend = document.getElementById('legend');
+  const config = configContaminants[contaminant] || {
+    escala: { 
+      minColor: '#0000FF', 
+      midColor: '#FFFF00', 
+      maxColor: '#FF0000', 
+      minValue: 0, 
+      midValue: 50, 
+      maxValue: 100 
+    },
+    nom: contaminant,
+    unitats: ''
+  };
+
+  legend.innerHTML = `
+    <strong>Llegenda (${toSubscript(config.nom)})</strong><br>
+    <div class="gradient-bar" style="
+      background: linear-gradient(to right,
+        ${config.escala.minColor},
+        ${config.escala.midColor},
+        ${config.escala.maxColor});
+    "></div>
+    <div style="display: flex; justify-content: space-between;">
+      <span>${config.escala.minValue}</span>
+      <span>${config.escala.midValue}</span>
+      <span>${config.escala.maxValue}</span>
+    </div>
+    <small>Valors en ${config.unitats}</small>
+  `;
+}
+
+/* Processa les dades del CSV i les organitza per any i contaminant */
+function processaDadesCSV(dadesCSV) {
+  const dadesProcessades = {};
+  dadesCSV.forEach(fila => {
+    const any = fila.any;
+    const contaminant = fila.contaminant;
+    const lat = parseFloat(fila.lat);
+    const lng = parseFloat(fila.lng);
+    const valor = parseFloat(fila.valor);
+
+    if (!dadesProcessades[any]) {
+      dadesProcessades[any] = {};
+    }
+    if (!dadesProcessades[any][contaminant]) {
+      dadesProcessades[any][contaminant] = [];
+    }
+    dadesProcessades[any][contaminant].push({ lat, lng, valor });
+  });
+  return dadesProcessades;
+}
+
+/* Carrega el fitxer CSV i inicialitza els menús i el heatmap */
+function carregaDades() {
+  Papa.parse('dades.csv', {
+    download: true,
+    header: true,
+    complete: function(results) {
+      dades = processaDadesCSV(results.data);
+      inicialitzaOpcionsAnys();
+      actualitzaOpcionsContaminants();
+      actualitzaHeatmap();
+    }
+  });
+}
+
+/* Escoltem l'esdeveniment de zoom per actualitzar els paràmetres del heatmap */
+map.on('zoomend', () => {
+  actualitzaHeatmap();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  carregaDades();
+});
+</script>
+
+</body>
+</html>
