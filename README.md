@@ -1,4 +1,9 @@
 # openair
+
+contains R and HTML codes to analyse pollution
+
+HTML code include heatmaps
+
 R code to analyse air pollution hourly data from Catalunya from Gencat and Meteocat servers.
 
 You only need to do minor edition at Visual Code Studio to adapt the code to your city databases and to call not my data but your own data from RStudio 
