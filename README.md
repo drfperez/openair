@@ -1,6 +1,8 @@
 # openair
 
-contains R and HTML codes to analyse pollution
+It contains Python based in pandas library, R codes based in openair library and HTML Javascript codes to analyse pollution
+
+Python codes are in Google Colab using Pandas library to tidy data
 
 HTML code include heatmaps
 
