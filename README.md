@@ -1,6 +1,6 @@
 # openair
 
-It contains Python based in pandas library, R codes based in openair library and HTML Javascript codes to analyse pollution
+It contains Python using mainly pandas library, R codes making use of openair library and finally HTML Javascript codes. All codes have the same objective: to analyse air pollution in Catalonia.
 
 Python codes are in Google Colab using Pandas library to tidy data
 
