@@ -2,7 +2,7 @@
 
 It contains Python using mainly pandas library, R codes making use of openair library and finally HTML Javascript codes. All codes have the same objective: to analyse air pollution in Catalonia.
 
-Python codes are in Google Colab using Pandas library to tidy data
+Python codes are in Google Colab ipynb format and Pandas library have been used to tidy air pollution data, in order to combine it with meteorological data in order to obtain CSV combined file ready to be used in RStudio.
 
 HTML code include heatmaps
 
