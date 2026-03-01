@@ -1,0 +1,379 @@
+codi_regio,nom_regio,codi_abs,nom_abs
+0,No disponible,0,No disponible
+61,Lleida,1,Agramunt
+61,Lleida,2,Alcarràs
+61,Lleida,3,Alfarràs - Almenar
+61,Lleida,12,Artesa de Segre
+61,Lleida,14,Balaguer
+61,Lleida,81,Bellpuig
+61,Lleida,86,Les Borges Blanques
+61,Lleida,106,Cervera - la Segarra
+61,Lleida,129,La Granadella
+61,Lleida,135,Lleida - 1 Centre Històric - Rambla de Ferran
+61,Lleida,136,Lleida - 2 Ronda - Mariola
+61,Lleida,137,Lleida - 3 Eixample
+61,Lleida,138,Lleida - 4 Balàfia - Pardinyes
+61,Lleida,139,Lleida - 5 Cappont
+61,Lleida,140,Lleida - 6 Bordeta - Magraners
+61,Lleida,141,Lleida rural - 1 Nord
+61,Lleida,161,Pla d'Urgell
+61,Lleida,181,Ponts
+61,Lleida,232,Seròs
+61,Lleida,245,Tàrrega
+61,Lleida,329,Lleida rural - 2 Sud
+61,Lleida,334,Almacelles
+61,Lleida,379,Lleida - 7 Onze de Setembre
+61,Lleida,408,Guissona - La Segarra
+62,Camp de Tarragona,87,Les Borges del Camp
+62,Camp de Tarragona,91,Cambrils
+62,Camp de Tarragona,107,Constantí
+62,Camp de Tarragona,112,Cornudella de Montsant
+62,Camp de Tarragona,118,Falset
+62,Camp de Tarragona,162,Montblanc
+62,Camp de Tarragona,163,Mont-roig del Camp
+62,Camp de Tarragona,166,El Morell
+62,Camp de Tarragona,188,Riudoms
+62,Camp de Tarragona,239,Tarragona - 1
+62,Camp de Tarragona,240,Tarragona - 2
+62,Camp de Tarragona,241,Tarragona - 3
+62,Camp de Tarragona,242,Tarragona - 4
+62,Camp de Tarragona,243,Tarragona - 5
+62,Camp de Tarragona,244,Tarragona - 6
+62,Camp de Tarragona,257,Torredembarra
+62,Camp de Tarragona,262,Alt Camp Est
+62,Camp de Tarragona,263,Valls urbà
+62,Camp de Tarragona,303,Reus - 1
+62,Camp de Tarragona,304,Reus - 2
+62,Camp de Tarragona,305,Reus - 3
+62,Camp de Tarragona,306,Reus - 4
+62,Camp de Tarragona,307,Reus - 5
+62,Camp de Tarragona,324,Vandellòs i l'Hospitalet de l'Infant
+62,Camp de Tarragona,333,Alt Camp Oest
+62,Camp de Tarragona,339,Salou
+62,Camp de Tarragona,340,Vila-seca
+62,Camp de Tarragona,352,Tarragona - 7
+62,Camp de Tarragona,354,La Selva del Camp
+62,Camp de Tarragona,364,Tarragona - 8
+63,Terres de l'Ebre,4,Amposta
+63,Terres de l'Ebre,113,Deltebre
+63,Terres de l'Ebre,120,Flix
+63,Terres de l'Ebre,165,Móra la Nova - Móra d'Ebre
+63,Terres de l'Ebre,178,L'Ametlla de Mar - El Perelló
+63,Terres de l'Ebre,206,La Ràpita - Alcanar
+63,Terres de l'Ebre,246,Terra Alta
+63,Terres de l'Ebre,255,Tortosa - 1 Est
+63,Terres de l'Ebre,256,Tortosa - 2 Oest
+63,Terres de l'Ebre,260,Ulldecona
+63,Terres de l'Ebre,328,L'Aldea - Camarles - l'Ampolla
+64,Girona,5,Anglès
+64,Girona,8,Arbúcies - Sant Hilari
+64,Girona,15,Banyoles
+64,Girona,80,Bàscara
+64,Girona,83,Besalú
+64,Girona,84,La Bisbal d'Empordà
+64,Girona,85,Blanes
+64,Girona,90,Calella
+64,Girona,92,Camprodon
+64,Girona,93,Canet de Mar
+64,Girona,100,Cassà de la Selva
+64,Girona,101,Celrà
+64,Girona,114,L'Escala
+64,Girona,119,Figueres
+64,Girona,124,Girona - 1
+64,Girona,125,Girona - 2
+64,Girona,126,Girona - 3
+64,Girona,127,Girona - 4
+64,Girona,133,La Jonquera
+64,Girona,134,Llançà
+64,Girona,142,Lloret de Mar
+64,Girona,143,Malgrat de Mar
+64,Girona,171,Olot
+64,Girona,172,Palafrugell
+64,Girona,173,Palamós
+64,Girona,177,Peralada
+64,Girona,187,Ripoll - Sant Joan de les Abadesses
+64,Girona,189,Roses
+64,Girona,199,Salt
+64,Girona,208,Sant Feliu de Guíxols
+64,Girona,221,Santa Coloma de Farners
+64,Girona,231,Sarrià de Ter
+64,Girona,234,Sils - Vidreres - Maçanet de la Selva
+64,Girona,258,Torroella de Montgrí
+64,Girona,267,Vilafant
+64,Girona,325,Pineda de Mar
+64,Girona,330,Breda - Hostalric
+64,Girona,336,Tordera
+64,Girona,343,Ribes de Freser - Campdevànol
+64,Girona,346,Sant Joan les Fonts
+64,Girona,347,Vall d'en Bas
+67,Catalunya Central,11,Artés
+67,Catalunya Central,82,Berga
+67,Catalunya Central,88,Calaf
+67,Catalunya Central,96,Cardona
+67,Catalunya Central,98,Montserrat
+67,Catalunya Central,102,Centelles
+67,Catalunya Central,128,Baix Berguedà
+67,Catalunya Central,130,Alt Berguedà
+67,Catalunya Central,144,Manlleu
+67,Catalunya Central,145,Manresa - 1
+67,Catalunya Central,146,Manresa - 2
+67,Catalunya Central,147,Manresa - 3
+67,Catalunya Central,148,Manresa - 4
+67,Catalunya Central,159,Moià
+67,Catalunya Central,167,Navàs - Balsareny
+67,Catalunya Central,185,Lluçanès
+67,Catalunya Central,200,Sallent
+67,Catalunya Central,211,Navarcles - Sant Fruitós de Bages
+67,Catalunya Central,212,Sant Hipólit de Voltregà
+67,Catalunya Central,215,Sant Joan de Vilatorrada
+67,Catalunya Central,217,Sant Quirze de Besora
+67,Catalunya Central,219,Sant Vicenç de Castellet
+67,Catalunya Central,236,El Solsonès
+67,Catalunya Central,237,Súria
+67,Catalunya Central,238,Santa Eugènia de Berga
+67,Catalunya Central,253,Tona
+67,Catalunya Central,254,Vall del Ges
+67,Catalunya Central,350,Vic - 1 Nord
+67,Catalunya Central,351,Vic - 2 Sud
+67,Catalunya Central,377,Roda de Ter
+67,Catalunya Central,409,Santpedor
+70,Penedès,13,El Vendrell
+70,Penedès,131,Anoia rural
+70,Penedès,218,Sant Sadurní d'Anoia
+70,Penedès,228,Santa Coloma de Queralt
+70,Penedès,229,Santa Margarida de Montbui
+70,Penedès,235,Sitges
+70,Penedès,269,Vilanova del Camí
+70,Penedès,314,Baix Penedès - Interior
+70,Penedès,316,Vilanova i la Geltrú - 1
+70,Penedès,317,Vilanova i la Geltrú - 2
+70,Penedès,337,Capellades
+70,Penedès,338,Piera
+70,Penedès,357,Calafell
+70,Penedès,359,Cubelles - Cunit
+70,Penedès,371,Igualada - 1
+70,Penedès,372,Igualada - 2
+70,Penedès,380,Vilanova i la Geltrú - 3
+70,Penedès,393,Ribes - Olivella
+70,Penedès,394,Roquetes - Canyelles
+70,Penedès,397,Vilafranca del Penedès - 1
+70,Penedès,398,Vilafranca del Penedès - 2
+70,Penedès,405,Penedès rural - Est
+70,Penedès,406,Penedès rural - Oest
+71,Alt Pirineu i Aran,7,Aran
+71,Alt Pirineu i Aran,103,Cerdanya
+71,Alt Pirineu i Aran,169,Alt Urgell Sud
+71,Alt Pirineu i Aran,174,Pallars Sobirà
+71,Alt Pirineu i Aran,179,La Pobla de Segur
+71,Alt Pirineu i Aran,180,Alta Ribagorça
+71,Alt Pirineu i Aran,233,La Seu d'Urgell
+71,Alt Pirineu i Aran,259,Tremp
+75,Barcelona Metropolitana Sud,108,Cornellà de Llobregat - 1
+75,Barcelona Metropolitana Sud,109,Cornellà de Llobregat - 2
+75,Barcelona Metropolitana Sud,110,Cornellà de Llobregat - 3
+75,Barcelona Metropolitana Sud,111,Cornellà de Llobregat - 4
+75,Barcelona Metropolitana Sud,115,Esparreguera
+75,Barcelona Metropolitana Sud,116,Esplugues de Llobregat - 1
+75,Barcelona Metropolitana Sud,117,Esplugues de Llobregat - 2
+75,Barcelona Metropolitana Sud,122,Gavà - 1
+75,Barcelona Metropolitana Sud,123,Gavà - 2
+75,Barcelona Metropolitana Sud,149,Martorell
+75,Barcelona Metropolitana Sud,160,Molins de Rei
+75,Barcelona Metropolitana Sud,168,Olesa de Montserrat
+75,Barcelona Metropolitana Sud,182,El Prat de Llobregat - 1
+75,Barcelona Metropolitana Sud,183,El Prat de Llobregat - 2
+75,Barcelona Metropolitana Sud,184,El Prat de Llobregat - 3
+75,Barcelona Metropolitana Sud,201,Sant Andreu de la Barca
+75,Barcelona Metropolitana Sud,202,Sant Boi de Llobregat - 1
+75,Barcelona Metropolitana Sud,203,Sant Boi de Llobregat - 2
+75,Barcelona Metropolitana Sud,204,Sant Boi de Llobregat - 3
+75,Barcelona Metropolitana Sud,205,Sant Boi de Llobregat - 4
+75,Barcelona Metropolitana Sud,209,Sant Feliu de Llobregat - 1
+75,Barcelona Metropolitana Sud,210,Sant Feliu de Llobregat - 2
+75,Barcelona Metropolitana Sud,213,Sant Joan Despí - 1
+75,Barcelona Metropolitana Sud,214,Sant Joan Despí - 2
+75,Barcelona Metropolitana Sud,216,Sant Just Desvern
+75,Barcelona Metropolitana Sud,261,Vallirana
+75,Barcelona Metropolitana Sud,265,Viladecans - 1
+75,Barcelona Metropolitana Sud,266,Viladecans - 2
+75,Barcelona Metropolitana Sud,288,L'Hospitalet de Llobregat - 01 Centre
+75,Barcelona Metropolitana Sud,289,L'Hospitalet de Llobregat - 02 Sant Josep
+75,Barcelona Metropolitana Sud,290,L'Hospitalet de Llobregat - 03 Colblanc
+75,Barcelona Metropolitana Sud,291,L'Hospitalet de Llobregat - 04 Torrassa
+75,Barcelona Metropolitana Sud,292,L'Hospitalet de Llobregat - 05 Santa Eulàlia Nord
+75,Barcelona Metropolitana Sud,293,L'Hospitalet de Llobregat - 06 Santa Eulàlia Sud
+75,Barcelona Metropolitana Sud,294,L'Hospitalet de Llobregat - 07 Florida Nord
+75,Barcelona Metropolitana Sud,295,L'Hospitalet de Llobregat - 08 Florida Sud
+75,Barcelona Metropolitana Sud,296,L'Hospitalet de Llobregat - 09 Pubilla Cases
+75,Barcelona Metropolitana Sud,297,L'Hospitalet de Llobregat - 10 Can Serra
+75,Barcelona Metropolitana Sud,298,L'Hospitalet de Llobregat - 11 Gornal
+75,Barcelona Metropolitana Sud,299,L'Hospitalet de Llobregat - 12 Bellvitge
+75,Barcelona Metropolitana Sud,360,Martorell rural
+75,Barcelona Metropolitana Sud,365,Castelldefels - 1
+75,Barcelona Metropolitana Sud,366,Castelldefels - 2
+75,Barcelona Metropolitana Sud,367,Pallejà
+75,Barcelona Metropolitana Sud,369,Corbera de Llobregat
+75,Barcelona Metropolitana Sud,370,Abrera
+75,Barcelona Metropolitana Sud,373,Begues
+75,Barcelona Metropolitana Sud,374,Sant Vicenç dels Horts - 1
+75,Barcelona Metropolitana Sud,375,Sant Vicenç dels Horts - 2
+75,Barcelona Metropolitana Sud,401,Viladecans - 3
+76,Barcelona Metropolitana Nord,9,Arenys de Mar
+76,Barcelona Metropolitana Nord,10,Argentona
+76,Barcelona Metropolitana Nord,89,Caldes de Montbui
+76,Barcelona Metropolitana Nord,95,Cardedeu
+76,Barcelona Metropolitana Nord,97,Castellar del Vallès
+76,Barcelona Metropolitana Nord,104,Cerdanyola del Vallès - 1
+76,Barcelona Metropolitana Nord,105,Cerdanyola del Vallès - 2
+76,Barcelona Metropolitana Nord,121,La Garriga
+76,Barcelona Metropolitana Nord,150,Martorelles
+76,Barcelona Metropolitana Nord,152,Mataró - 1
+76,Barcelona Metropolitana Nord,153,Mataró - 2
+76,Barcelona Metropolitana Nord,154,Mataró - 3
+76,Barcelona Metropolitana Nord,155,Mataró - 4
+76,Barcelona Metropolitana Nord,156,Mataró - 5
+76,Barcelona Metropolitana Nord,157,Mataró - 6
+76,Barcelona Metropolitana Nord,158,Mataró - 7
+76,Barcelona Metropolitana Nord,164,Montornès - Montmeló
+76,Barcelona Metropolitana Nord,175,Parets del Vallès
+76,Barcelona Metropolitana Nord,186,Premià de Mar
+76,Barcelona Metropolitana Nord,190,Sabadell - 1A
+76,Barcelona Metropolitana Nord,191,Sabadell - 1B
+76,Barcelona Metropolitana Nord,192,Sabadell - 2
+76,Barcelona Metropolitana Nord,193,Sabadell - 3A
+76,Barcelona Metropolitana Nord,194,Sabadell - 3B
+76,Barcelona Metropolitana Nord,196,Sabadell - 5
+76,Barcelona Metropolitana Nord,197,Sabadell - 6
+76,Barcelona Metropolitana Nord,198,Sabadell - 7
+76,Barcelona Metropolitana Nord,207,Sant Celoni
+76,Barcelona Metropolitana Nord,222,Santa Coloma de Gramenet - 1
+76,Barcelona Metropolitana Nord,223,Santa Coloma de Gramenet - 2
+76,Barcelona Metropolitana Nord,224,Santa Coloma de Gramenet - 3
+76,Barcelona Metropolitana Nord,225,Santa Coloma de Gramenet - 4
+76,Barcelona Metropolitana Nord,226,Santa Coloma de Gramenet - 5
+76,Barcelona Metropolitana Nord,230,Santa Perpètua de Mogoda
+76,Barcelona Metropolitana Nord,247,Terrassa - A
+76,Barcelona Metropolitana Nord,248,Terrassa - B
+76,Barcelona Metropolitana Nord,249,Terrassa - C
+76,Barcelona Metropolitana Nord,250,Terrassa - D
+76,Barcelona Metropolitana Nord,251,Terrassa - E
+76,Barcelona Metropolitana Nord,252,Terrassa - F
+76,Barcelona Metropolitana Nord,271,Vilassar de Mar
+76,Barcelona Metropolitana Nord,272,Badalona - 01
+76,Barcelona Metropolitana Nord,273,Badalona - 02
+76,Barcelona Metropolitana Nord,274,Badalona - 03
+76,Barcelona Metropolitana Nord,275,Badalona - 04
+76,Barcelona Metropolitana Nord,276,Badalona - 05
+76,Barcelona Metropolitana Nord,277,Badalona - 06
+76,Barcelona Metropolitana Nord,279,Badalona - 08
+76,Barcelona Metropolitana Nord,280,Badalona - 09
+76,Barcelona Metropolitana Nord,281,Badalona - 10
+76,Barcelona Metropolitana Nord,282,Badalona - 11
+76,Barcelona Metropolitana Nord,283,Badalona - 12
+76,Barcelona Metropolitana Nord,284,Granollers - 1 Oest
+76,Barcelona Metropolitana Nord,285,Granollers - 2 Nord
+76,Barcelona Metropolitana Nord,286,Granollers - 3 Centre Est
+76,Barcelona Metropolitana Nord,287,Granollers - 4 Sud
+76,Barcelona Metropolitana Nord,300,La Llagosta
+76,Barcelona Metropolitana Nord,302,Montcada i Reixac
+76,Barcelona Metropolitana Nord,309,Rubí - 1
+76,Barcelona Metropolitana Nord,310,Rubí - 2
+76,Barcelona Metropolitana Nord,311,Sant Adrià de Besòs - 1
+76,Barcelona Metropolitana Nord,312,Sant Adrià de Besòs - 2
+76,Barcelona Metropolitana Nord,315,Vall del Tenes
+76,Barcelona Metropolitana Nord,319,Montgat
+76,Barcelona Metropolitana Nord,320,Barberà del Vallès
+76,Barcelona Metropolitana Nord,322,Badia del Vallès
+76,Barcelona Metropolitana Nord,335,Sant Andreu de Llavaneres
+76,Barcelona Metropolitana Nord,341,Badalona - 07A
+76,Barcelona Metropolitana Nord,342,Badalona - 07B
+76,Barcelona Metropolitana Nord,344,Sabadell - 4A
+76,Barcelona Metropolitana Nord,345,Sabadell - 4B
+76,Barcelona Metropolitana Nord,348,Mollet del Vallès - 1 Est
+76,Barcelona Metropolitana Nord,349,Mollet del Vallès - 2 Oest
+76,Barcelona Metropolitana Nord,353,Vilassar de Dalt
+76,Barcelona Metropolitana Nord,355,La Roca del Vallès
+76,Barcelona Metropolitana Nord,356,Terrassa - G
+76,Barcelona Metropolitana Nord,361,El Masnou - Alella
+76,Barcelona Metropolitana Nord,362,Ocata - Teià
+76,Barcelona Metropolitana Nord,363,Sant Quirze del Vallès
+76,Barcelona Metropolitana Nord,368,Santa Coloma de Gramenet - 6
+76,Barcelona Metropolitana Nord,376,Alt Mogent
+76,Barcelona Metropolitana Nord,378,Rubí - 3
+76,Barcelona Metropolitana Nord,384,Cerdanyola - Ripollet
+76,Barcelona Metropolitana Nord,386,Ripollet - 1
+76,Barcelona Metropolitana Nord,387,Ripollet - 2
+76,Barcelona Metropolitana Nord,388,Sant Cugat del Vallès - 1
+76,Barcelona Metropolitana Nord,389,Sant Cugat del Vallès - 2
+76,Barcelona Metropolitana Nord,390,Sant Cugat del Vallès - 3
+76,Barcelona Metropolitana Nord,391,Palau-solità i Plegamans
+76,Barcelona Metropolitana Nord,392,Polinyà - Sentmenat
+76,Barcelona Metropolitana Nord,399,Castellbisbal
+76,Barcelona Metropolitana Nord,404,Terrassa - H
+79,Barcelona Ciutat,16,Barcelona - 01A
+79,Barcelona Ciutat,17,Barcelona - 01B
+79,Barcelona Ciutat,18,Barcelona - 01C
+79,Barcelona Ciutat,19,Barcelona - 01D
+79,Barcelona Ciutat,20,Barcelona - 01E
+79,Barcelona Ciutat,21,Barcelona - 02A
+79,Barcelona Ciutat,22,Barcelona - 02B
+79,Barcelona Ciutat,23,Barcelona - 02C
+79,Barcelona Ciutat,24,Barcelona - 02D
+79,Barcelona Ciutat,25,Barcelona - 02E
+79,Barcelona Ciutat,27,Barcelona - 02G
+79,Barcelona Ciutat,28,Barcelona - 02H
+79,Barcelona Ciutat,29,Barcelona - 02I
+79,Barcelona Ciutat,30,Barcelona - 02J
+79,Barcelona Ciutat,31,Barcelona - 02K
+79,Barcelona Ciutat,32,Barcelona - 03A
+79,Barcelona Ciutat,33,Barcelona - 03B
+79,Barcelona Ciutat,34,Barcelona - 03C
+79,Barcelona Ciutat,35,Barcelona - 03D
+79,Barcelona Ciutat,36,Barcelona - 03E
+79,Barcelona Ciutat,38,Barcelona - 03G
+79,Barcelona Ciutat,39,Barcelona - 04A
+79,Barcelona Ciutat,40,Barcelona - 04B
+79,Barcelona Ciutat,41,Barcelona - 04C
+79,Barcelona Ciutat,42,Barcelona - 05A
+79,Barcelona Ciutat,43,Barcelona - 05B
+79,Barcelona Ciutat,44,Barcelona - 05C
+79,Barcelona Ciutat,45,Barcelona - 05D
+79,Barcelona Ciutat,46,Barcelona - 05E
+79,Barcelona Ciutat,47,Barcelona - 06A
+79,Barcelona Ciutat,48,Barcelona - 06B
+79,Barcelona Ciutat,49,Barcelona - 06C
+79,Barcelona Ciutat,50,Barcelona - 06D
+79,Barcelona Ciutat,51,Barcelona - 07A
+79,Barcelona Ciutat,52,Barcelona - 07B
+79,Barcelona Ciutat,53,Barcelona - 07C
+79,Barcelona Ciutat,54,Barcelona - 07D
+79,Barcelona Ciutat,55,Barcelona - 07E
+79,Barcelona Ciutat,56,Barcelona - 07F
+79,Barcelona Ciutat,59,Barcelona - 08C
+79,Barcelona Ciutat,62,Barcelona - 08F
+79,Barcelona Ciutat,63,Barcelona - 08G
+79,Barcelona Ciutat,64,Barcelona - 08H
+79,Barcelona Ciutat,65,Barcelona - 09A
+79,Barcelona Ciutat,67,Barcelona - 09C
+79,Barcelona Ciutat,69,Barcelona - 09E
+79,Barcelona Ciutat,70,Barcelona - 09F
+79,Barcelona Ciutat,71,Barcelona - 10A
+79,Barcelona Ciutat,72,Barcelona - 10B
+79,Barcelona Ciutat,73,Barcelona - 10C
+79,Barcelona Ciutat,74,Barcelona - 10D
+79,Barcelona Ciutat,75,Barcelona - 10E
+79,Barcelona Ciutat,76,Barcelona - 10F
+79,Barcelona Ciutat,77,Barcelona - 10G
+79,Barcelona Ciutat,78,Barcelona - 10H
+79,Barcelona Ciutat,79,Barcelona - 10I
+79,Barcelona Ciutat,326,Barcelona - 07G
+79,Barcelona Ciutat,327,Barcelona - 08I
+79,Barcelona Ciutat,331,Barcelona - 10J
+79,Barcelona Ciutat,358,Barcelona - 06E
+79,Barcelona Ciutat,383,Barcelona - 03H
+79,Barcelona Ciutat,385,Barcelona - 08J
+79,Barcelona Ciutat,395,Barcelona - 09H
+79,Barcelona Ciutat,396,Barcelona - 09I
+79,Barcelona Ciutat,400,Barcelona - 03I
+79,Barcelona Ciutat,402,Barcelona - 08K
+79,Barcelona Ciutat,403,Barcelona - 08L
