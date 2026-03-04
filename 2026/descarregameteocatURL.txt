@@ -1,0 +1,4 @@
+Descarrega per URL
+Canvia codi_estació, dates i limit de dades
+
+https://analisi.transparenciacatalunya.cat/resource/nzvn-apee.csv?$where=codi_estacio%3D%27XC%27+AND+codi_variable+IN(%2730%27,%2731%27,%2732%27,%2733%27,%2734%27,%2735%27,%2736%27)+AND+data_lectura%3E%3D%272024-01-01T00:00:00%27+AND+data_lectura%3C%272024-01-02T00:00:00%27&$limit=100
