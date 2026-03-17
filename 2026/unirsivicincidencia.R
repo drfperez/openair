@@ -225,6 +225,12 @@ head(mitjanes_diaries)
 > x4 <- x4 %>%
 +     mutate(date = as.Date(date, format = "%Y-%m-%d"))
 
+merged_df <- x4 %>%
+  full_join(incid_diaria_global, by = "date") %>%
+  full_join(mitjanes_diaries, by = "date")
+
+# Veure el resultat
+head(merged_df)
 
 
 
