@@ -204,6 +204,24 @@ cat("✅ Dataset combinat creat (csivic)\n",
     "Files totals csivic1225:", nrow(csivic1225), "\n")
 
 
+library(tidyverse)
+library(lubridate)
+
+# Suposem que ja tens el dataframe 'mitjanes_diaries'
+
+# 1️⃣ Convertir data a Date
+mitjanes_diaries <- mitjanes_diaries %>%
+  mutate(data = as.Date(data))
+
+# 2️⃣ Renombrar columna 'data' → 'date'
+mitjanes_diaries <- mitjanes_diaries %>%
+  rename(date = data)
+
+# 3️⃣ Comprovació ràpida
+glimpse(mitjanes_diaries)
+head(mitjanes_diaries)
+
+
 
 
 
