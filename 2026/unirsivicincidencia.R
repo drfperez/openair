@@ -27,6 +27,39 @@ cat("✅ Dataset combinat correctament! Total files:", nrow(totes_dades), "\n")
 
 *****************************************
 
+# =========================================================
+# COMBINAR CONTAMINANTS + EPIDEMIOLOGIA I FILTRAR PER DATES
+# =========================================================
+
+library(tidyverse)
+
+# 1️⃣ Assegurar que les columnes de data tenen el mateix nom i format
+mitjanes_diaries <- mitjanes_diaries %>%
+  rename(date = dia) %>%              # canviem 'dia' a 'date'
+  mutate(data = as.Date(data))
+
+incid_diaria_globatl <- incid_diaria_global %>%
+  mutate(date = as.Date(date))
+
+# 2️⃣ Combinar per data
+csivic <- left_join(mitjanes_diaries, totes_dades, by = "data")
+
+# 3️⃣ Guardar dataset complet
+write_csv(csivic, "csivic.csv")
+
+# 4️⃣ Filtrar període 2012-01-01 a 2025-12-31
+csivic1225 <- csivic %>%
+  filter(data >= as.Date("2012-01-01") & data <= as.Date("2025-12-31"))
+
+# 5️⃣ (Opcional) Guardar també el dataset filtrat
+write_csv(csivic1225, "csivic_2012_2025.csv")
+
+# 6️⃣ Missatge final
+cat("✅ Dataset combinat creat (csivic)\n",
+    "✅ Dataset filtrat creat (csivic1225)\n",
+    "Files totals csivic:", nrow(csivic), "\n",
+    "Files totals csivic1225:", nrow(csivic1225), "\n")
+
 
 
 
