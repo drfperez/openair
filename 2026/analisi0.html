@@ -1,0 +1,220 @@
+# =========================================================
+
+# PIPELINE COMPLET AUTOMÀTIC - EPIDEMIOLOGIA AMBIENTAL (R)
+
+# =========================================================
+
+# -------------------------------
+
+# 0. LLIBRERIES
+
+# -------------------------------
+
+# install.packages(c("tidyverse","lubridate","splines","dlnm","mgcv"))
+
+library(tidyverse)
+library(lubridate)
+library(splines)
+library(dlnm)
+library(mgcv)
+
+# -------------------------------
+
+# 1. VALIDACIÓ CSV
+
+# -------------------------------
+
+data <- read.csv("dades.csv",
+header = TRUE,
+na.strings = c("NA", "", " "),
+stringsAsFactors = FALSE)
+
+cat("Files:", nrow(data), "\n")
+cat("Columnes:", ncol(data), "\n")
+
+# Comprovar noms de columnes
+
+print(names(data))
+
+# -------------------------------
+
+# 2. PREPARACIÓ
+
+# -------------------------------
+
+data$date <- as.Date(data$date)
+
+data <- data %>%
+mutate(across(-date, as.numeric)) %>%
+arrange(date)
+
+# Variables temporals
+
+data <- data %>%
+mutate(
+time = as.numeric(date),
+dow = factor(weekdays(date)),
+month = month(date),
+year = year(date)
+)
+
+# -------------------------------
+
+# 3. NETEJA
+
+# -------------------------------
+
+data_clean <- data %>%
+drop_na(casos_total, poblacio_total, temp_mean, no2)
+
+# Diagnòstic de dades
+
+cat("Files després neteja:", nrow(data_clean), "\n")
+
+# -------------------------------
+
+# 4. DETECTAR MIDA DE DADES
+
+# -------------------------------
+
+n_days <- nrow(data_clean)
+
+if (n_days < 30) {
+cat("⚠️ Dataset molt petit → model simple\n")
+model_type <- "simple"
+} else if (n_days < 365) {
+cat("⚠️ Dataset mitjà → model amb control temporal bàsic\n")
+model_type <- "medium"
+} else {
+cat("✅ Dataset gran → DLNM complet\n")
+model_type <- "advanced"
+}
+
+# -------------------------------
+
+# 5. MODEL SEGONS DADES
+
+# -------------------------------
+
+if (model_type == "simple") {
+
+# MODEL SIMPLE (pilot study)
+
+model <- glm(
+casos_total ~ temp_mean + no2,
+family = poisson(link = "log"),
+offset = log(poblacio_total),
+data = data_clean
+)
+
+}
+
+if (model_type == "medium") {
+
+model <- glm(
+casos_total ~ temp_mean + no2 +
+ns(time, df = 4) +
+dow,
+family = quasipoisson(link = "log"),
+offset = log(poblacio_total),
+data = data_clean
+)
+
+}
+
+if (model_type == "advanced") {
+
+lag_max <- 7
+
+cb_no2 <- crossbasis(
+data_clean$no2,
+lag = lag_max,
+argvar = list(fun = "ns", df = 3),
+arglag = list(fun = "ns", df = 3)
+)
+
+cb_temp <- crossbasis(
+data_clean$temp_mean,
+lag = lag_max,
+argvar = list(fun = "ns", df = 4),
+arglag = list(fun = "ns", df = 3)
+)
+
+nyears <- length(unique(data_clean$year))
+df_time <- 7 * nyears
+
+model <- glm(
+casos_total ~ cb_no2 + cb_temp +
+ns(time, df = df_time) +
+dow,
+family = quasipoisson(link = "log"),
+offset = log(poblacio_total),
+data = data_clean
+)
+}
+
+summary(model)
+
+# -------------------------------
+
+# 6. INTERPRETACIÓ AUTOMÀTICA
+
+# -------------------------------
+
+coef_exp <- exp(coef(model))
+print(coef_exp)
+
+cat("\n--- INTERPRETACIÓ ---\n")
+
+for (i in 1:length(coef_exp)) {
+cat(names(coef_exp)[i], ": RR =", round(coef_exp[i], 3), "\n")
+}
+
+# -------------------------------
+
+# 7. DIAGNÒSTIC
+
+# -------------------------------
+
+res <- residuals(model, type = "pearson")
+
+plot(fitted(model), res,
+main = "Residus vs ajustats")
+abline(h = 0, col = "red")
+
+acf(res)
+
+# -------------------------------
+
+# 8. EXPORTACIÓ
+
+# -------------------------------
+
+write.csv(summary(model)$coefficients,
+"resultats_model.csv")
+
+cat("Resultats guardats a resultats_model.csv\n")
+
+# -------------------------------
+
+# 9. ALERTES AUTOMÀTIQUES
+
+# -------------------------------
+
+if (n_days < 10) {
+cat("❌ Massa poques dades → resultats NO fiables\n")
+}
+
+if (n_days >= 10 & n_days < 100) {
+cat("⚠️ Resultats exploratoris (no publicables)\n")
+}
+
+if (n_days >= 365) {
+cat("✅ Resultats robustos (nivell publicació)\n")
+}
+
+# =========================================================
+
+# FI PIPELINE
+
+# =========================================================
