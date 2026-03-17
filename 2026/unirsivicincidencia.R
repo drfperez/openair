@@ -235,29 +235,32 @@ head(merged_df)
 library(tidyverse)
 library(lubridate)
 
-# ⚡ Suposem que ja tens els datasets:
-# x4 (meteorologia), mitjanes_diaries (contaminants), incid_diaria_global (epidemiologia)
-# i que tots tenen la columna 'date' en classe Date.
+# ⚡ Arrodonir només les columnes meteorològiques a 1 decimal
+x4_1dec <- x4 %>%
+  mutate(across(where(is.numeric), ~ round(.x, 1)))
 
-# 1️⃣ Combinar tots en un únic dataframe
-merged_df <- x4 %>%
-  full_join(incid_diaria_global, by = "date") %>%
-  full_join(mitjanes_diaries, by = "date")
+# ⚡ Obtenir els noms de les columnes per ordenar
+meteo_cols <- colnames(x4_1dec)[colnames(x4_1dec) != "date"]
+contaminant_cols <- colnames(mitjanes_diaries)[colnames(mitjanes_diaries) != "date"]
+epid_cols <- colnames(incid_diaria_global)[colnames(incid_diaria_global) != "date"]
 
-# 2️⃣ Filtrar per període 2012-01-01 a 2025-12-31
+# ⚡ Combinar tots els datasets
+merged_df <- x4_1dec %>%
+  full_join(mitjanes_diaries, by = "date") %>%
+  full_join(incid_diaria_global, by = "date")
+
+# ⚡ Reordenar columnes: date + meteo + contaminants + epidemiologia
+merged_df <- merged_df %>%
+  select(date, all_of(meteo_cols), all_of(contaminant_cols), all_of(epid_cols))
+
+# ⚡ Filtrar per període 2012-01-01 a 2025-12-31
 merged_filtered <- merged_df %>%
   filter(date >= as.Date("2012-01-01") & date <= as.Date("2025-12-31"))
 
-# 3️⃣ Guardar en CSV únic
-write_csv(merged_filtered, "csivic_2012_2025_full.csv")
+# ⚡ Guardar CSV final
+write_csv(merged_filtered, "csivic_2012_2025_meteo_1decimal.csv")
 
-# 4️⃣ Missatge de confirmació
-cat("✅ CSV únic creat amb dades de 2012-01-01 a 2025-12-31\n",
+cat("✅ CSV final creat amb columnes ordenades i meteorologia arrodonida a 1 decimal\n",
     "Files totals:", nrow(merged_filtered), "\n")
-
-
-
-
-
 
 
