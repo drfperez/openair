@@ -86,6 +86,65 @@ dades_combinades <- left_join(contaminants, totes_dades, by = "data")
 glimpse(dades_combinades)
 head(dades_combinades)
 
+
 # 5️⃣ Guardar el resultat
 write_csv(dades_combinades, "epidemiologia_i_contaminants.csv")
 cat("✅ Dataset combinat amb data uniforme guardat!\n")
+
+
+**************************
+
+ciutatwide<-read.csv("processed_data_wide.csv")
+View(ciutatwide)
+
+
+******
+# =========================================================
+# CALCULAR MITJANES DIÀRIES DE CIUTATWIDE.CSV
+# =========================================================
+
+library(tidyverse)
+library(lubridate)  # per treballar amb dates i hores
+
+# 1️⃣ Llegir el CSV
+ciutat <- read_csv("ciutatwide.csv", col_types = cols())  # manté tipus automàtics
+
+# 2️⃣ Convertir la columna 'date' a POSIXct (data i hora)
+ciutat <- ciutat %>%
+  mutate(date = ymd_hms(date))  # utilitza lubridate per assegurar el format correcte
+
+# 3️⃣ Crear columna 'dia' només amb la data (sense hora)
+ciutat <- ciutat %>%
+  mutate(dia = as.Date(date))
+
+# 4️⃣ Seleccionar només les columnes de contaminants
+contaminants <- ciutat %>%
+  select(dia, h2s, hcnm, hct, no, no2, nox, o3, pm10, pm2.5, so2)
+
+# 5️⃣ Agrupar per dia i calcular la mitjana ignorar NA
+mitjanes_diaries <- contaminants %>%
+  group_by(dia) %>%
+  summarise(across(everything(), ~ mean(.x, na.rm = TRUE))) %>%
+  arrange(dia)
+
+# 6️⃣ Veure les primeres files
+head(mitjanes_diaries)
+
+# 7️⃣ Guardar el resultat com CSV
+write_csv(mitjanes_diaries, "mitjanes_diaries.csv")
+cat("✅ Mitjanes diàries calculades i guardades en mitjanes_diaries.csv\n")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
