@@ -98,43 +98,41 @@ ciutatwide<-read.csv("processed_data_wide.csv")
 View(ciutatwide)
 
 
-******
 # =========================================================
-# CALCULAR MITJANES DIÀRIES DE CIUTATWIDE.CSV
+# MITJANES DIÀRIES AMB NA EN LLOC DE NaN
 # =========================================================
 
 library(tidyverse)
-library(lubridate)  # per treballar amb dates i hores
+library(lubridate)
 
-# 1️⃣ Llegir el CSV
-ciutat <- read_csv("ciutatwide.csv", col_types = cols())  # manté tipus automàtics
+# 1️⃣ Llegir CSV
+ciutat <- read_csv("ciutatwide.csv", col_types = cols())
 
-# 2️⃣ Convertir la columna 'date' a POSIXct (data i hora)
-ciutat <- ciutat %>%
-  mutate(date = ymd_hms(date))  # utilitza lubridate per assegurar el format correcte
+# 2️⃣ Convertir 'date' a POSIXct
+ciutat <- ciutat %>% mutate(date = ymd_hms(date))
 
-# 3️⃣ Crear columna 'dia' només amb la data (sense hora)
-ciutat <- ciutat %>%
-  mutate(dia = as.Date(date))
+# 3️⃣ Crear columna 'dia' només amb la data
+ciutat <- ciutat %>% mutate(dia = as.Date(date))
 
-# 4️⃣ Seleccionar només les columnes de contaminants
-contaminants <- ciutat %>%
-  select(dia, h2s, hcnm, hct, no, no2, nox, o3, pm10, pm2.5, so2)
+# 4️⃣ Seleccionar només columna 'dia' i contaminants
+contaminants <- ciutat %>% select(dia, h2s, hcnm, hct, no, no2, nox, o3, pm10, pm2.5, so2)
 
-# 5️⃣ Agrupar per dia i calcular la mitjana ignorar NA
+# 5️⃣ Agrupar per dia i calcular mitjana, ignorar NA
 mitjanes_diaries <- contaminants %>%
   group_by(dia) %>%
   summarise(across(everything(), ~ mean(.x, na.rm = TRUE))) %>%
   arrange(dia)
 
-# 6️⃣ Veure les primeres files
+# 6️⃣ Substituir NaN per NA
+mitjanes_diaries <- mitjanes_diaries %>%
+  mutate(across(everything(), ~ ifelse(is.nan(.x), NA, .x)))
+
+# 7️⃣ Veure les primeres files
 head(mitjanes_diaries)
 
-# 7️⃣ Guardar el resultat com CSV
+# 8️⃣ Guardar com CSV
 write_csv(mitjanes_diaries, "mitjanes_diaries.csv")
-cat("✅ Mitjanes diàries calculades i guardades en mitjanes_diaries.csv\n")
-
-
+cat("✅ Mitjanes diàries calculades amb NA en lloc de NaN i guardades!\n")
 
 
 
