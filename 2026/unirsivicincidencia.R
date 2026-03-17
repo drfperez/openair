@@ -222,6 +222,10 @@ glimpse(mitjanes_diaries)
 head(mitjanes_diaries)
 
 
+> x4 <- x4 %>%
++     mutate(date = as.Date(date, format = "%Y-%m-%d"))
+
+
 
 
 
