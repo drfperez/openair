@@ -19,6 +19,16 @@
 # ))
 install.packages ("openairmaps", dependencies=TRUE);
 # Pot ser necessari descarregar Rtools per posar biblioteca "nanotext" que ha de ser major a 1.9 per posar "mirai" que és una biblioteca amb dependència
+# Rtools és un conjunt d’eines per a Windows que permet compilar i construir paquets d’R des del codi font. En comptes de només instal·lar paquets ja precompilats 
+# (binaris), Rtools proporciona compiladors (com GCC), utilitats de línia de comandes i llibreries necessàries perquè R pugui “fabricar” paquets quan no existeix 
+# una versió ja preparada per a Windows o quan el paquet conté codi en C, C++ o Fortran. És essencial si vols desenvolupar paquets, instal·lar versions en
+# desenvolupament de GitHub o treballar amb llibreries que requereixen compilació manual.
+
+# mirai és un paquet d’R dissenyat per executar tasques de manera asíncrona i en paral·lel, és a dir, permet llançar càlculs en segon pla sense bloquejar 
+# la sessió principal d’R. És especialment útil quan treballes amb processos llargs (per exemple simulacions, models o mapes complexos) perquè pots continuar 
+# utilitzant R mentre les tasques s’executen. Internament es basa en un sistema de comunicació eficient i sovint es combina amb altres paquets com `nanonext` 
+# per gestionar missatgeria i concurrència de manera robusta.
+
 # ---------------------------------------------------------
 # 2. CARREGAR LLIBRERIES
 # ---------------------------------------------------------
