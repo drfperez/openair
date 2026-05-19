@@ -33,6 +33,13 @@ install.packages ("openairmaps", dependencies=TRUE);
 # 2. CARREGAR LLIBRERIES
 # ---------------------------------------------------------
 
+# Aquest bloc de codi carrega diversos paquets essencials d’R per a treball amb dades espacials, visualització i qualitat de l’aire. sf permet gestionar dades
+# geoespacials de manera estàndard (punts, línies i polígons), mentre que ggplot2 s’utilitza per crear gràfics flexibles i d’alta qualitat. rnaturalearth i 
+# rnaturalearthdata proporcionen mapes base del món i dades geogràfiques per contextualitzar les visualitzacions. dplyr facilita la manipulació i transformació 
+# de dades de manera eficient. Per altra banda, openair i openairmaps estan especialitzats en l’anàlisi i visualització de dades de contaminació atmosfèrica, 
+# incloent gràfics com polar plots i mapes interactius. Finalment, htmlwidgets permet exportar visualitzacions interactives d’R a fitxers HTML que es poden obrir 
+# i compartir en qualsevol navegador.
+
 library(sf)
 library(ggplot2)
 library(rnaturalearth)
