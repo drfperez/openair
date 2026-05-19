@@ -17,7 +17,8 @@
 #   "openairmaps",
 #   "htmlwidgets"
 # ))
-
+install.packages ("openairmaps", dependencies=TRUE);
+# Pot ser necessari descarregar Rtools per posar biblioteca "nanotext" que ha de ser major a 1.9 per posar "mirai" que és una biblioteca amb dependència
 # ---------------------------------------------------------
 # 2. CARREGAR LLIBRERIES
 # ---------------------------------------------------------
